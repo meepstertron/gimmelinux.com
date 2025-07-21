@@ -64,5 +64,4 @@ jobs:
       run: |
         kubectl rollout restart deployment/gimmelinux-frontend
         kubectl rollout restart deployment/gimmelinux-backend
-        kubectl rollout restart deployment/gimmelinux-worker
-        kubectl rollout restart deployment/gimmelinux-redis
+        kubectl rollout restart deployment/gimmelinux-dind
