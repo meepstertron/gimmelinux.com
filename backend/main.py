@@ -26,11 +26,11 @@ queue_lock = asyncio.Lock()
 
 app = FastAPI()
 
-@app.get("/ping")
+@app.get("/api/ping")
 async def ping():
     return {"message": "pong"}
 
-@app.websocket("/ws")
+@app.websocket("/api/ws")
 async def websocket_endpoint(websocket: WebSocket):
     global active_containers
     await websocket.accept()
