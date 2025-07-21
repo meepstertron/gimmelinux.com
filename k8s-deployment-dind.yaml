@@ -17,7 +17,7 @@ spec:
         image: docker:20.10.7-dind
         securityContext:
           privileged: true
-        command: ["--host=tcp://0.0.0.0:2375", "--host=unix:///var/run/docker.sock"]
+        command: ["dockerd", "--host=tcp://0.0.0.0:2375", "--host=unix:///var/run/docker.sock"]
         env:
         - name: DOCKER_TLS_CERTDIR
           value: ""
