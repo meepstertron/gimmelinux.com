@@ -5,14 +5,13 @@ from starlette.websockets import WebSocketState
 import asyncio
 import collections
 
-MAX_CONTAINERS = 2
+MAX_CONTAINERS = 15
 VERSION = "0.1.0"
 TEXTS = [
         "Bash for the people!",
         "69 lonely shells in your terminal",
         "Now with 100% less php",
-        "Docking to the port",
-        ""
+        "Docking to the port"
     ]
 
 motd = f"""
