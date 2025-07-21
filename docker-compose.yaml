@@ -1,0 +1,34 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: gimmelinux-backend:latest
+    container_name: gimmelinux-backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - dind
+    environment:
+      - DOCKER_HOST=tcp://dind:2375
+
+  dind:
+    image: docker:20.10.7-dind
+    container_name: gimmelinux-dind
+    privileged: true
+    command: ["--host=tcp://0.0.0.0:2375", "--host=unix:///var/run/docker.sock"]
+    ports:
+      - "2375:2375"
+    environment:
+      - DOCKER_TLS_CERTDIR=
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: gimmelinux-frontend:latest
+    container_name: gimmelinux-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

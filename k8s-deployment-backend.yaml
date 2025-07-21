@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gimmelinux-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gimmelinux-backend
+  template:
+    metadata:
+      labels:
+        app: gimmelinux-backend
+    spec:
+      containers:
+      - name: gimmelinux-backend
+        image: gimmelinux-backend:latest
+        env:
+        - name: DOCKER_HOST
+          value: tcp://gimmelinux-dind:2375
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gimmelinux-backend
+spec:
+  ports:
+  - port: 8000
+    targetPort: 8000
+  selector:
+    app: gimmelinux-backend
