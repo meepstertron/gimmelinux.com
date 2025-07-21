@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: gimmelinux-backend
-        image: gimmelinux-backend:latest
+        image: ghcr.io/meepstertron/gimmelinux-backend:latest
         env:
         - name: DOCKER_HOST
           value: tcp://gimmelinux-dind:2375

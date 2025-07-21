@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: gimmelinux-frontend
-        image: gimmelinux-frontend:latest
+        image: ghcr.io/meepstertron/gimmelinux-frontend:latest
         ports:
         - containerPort: 80
 ---
