@@ -34,7 +34,13 @@
     <body>
       <div id="terminal" ></div>
       <script>
-  const socket = new WebSocket('ws://' + window.location.host + '/api/ws');
+  
+  // if https is used use wss or else the socket aint gonna connect
+  if (window.location.protocol === 'https:') {
+    const socket = new WebSocket('wss://' + window.location.host + '/api/ws');
+  } else {
+    const socket = new WebSocket('ws://' + window.location.host + '/api/ws');
+  }
 
   var term = new Terminal({
     theme: {
