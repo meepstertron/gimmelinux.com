@@ -16,7 +16,8 @@ TEXTS = [
 
 motd = f"""
 gimmelinux.com - {random.choice(TEXTS)} \r
-powered by hexagonical.xyz
+Version: {VERSION} \r
+powered by hexagonical.xyz \r
 Open source at https://github.com/meepstertron/gimmelinux.com
 """
 active_containers = 0
@@ -35,11 +36,11 @@ async def websocket_endpoint(websocket: WebSocket):
     global active_containers
     await websocket.accept()
     
-
+    text = motd
     
 
 
-    await websocket.send_text(f"{motd}\r\n")
+    await websocket.send_text(f"{text}\r\n")
 
 
     async with queue_lock:
