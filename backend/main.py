@@ -108,6 +108,9 @@ async def websocket_endpoint(websocket: WebSocket):
     finally:
         async with queue_lock:
             active_containers -= 1
+        
+        websocket.send_text("Closing connection...\r\n")
+
         try:
             await websocket.close()
         except Exception:
