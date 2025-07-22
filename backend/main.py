@@ -17,6 +17,7 @@ TEXTS = [
 motd = f"""
 gimmelinux.com - {random.choice(TEXTS)} \r
 powered by hexagonical.xyz
+Open source at https://github.com/meepstertron/gimmelinux.com
 """
 active_containers = 0
 queue = collections.deque()
@@ -120,3 +121,10 @@ async def websocket_endpoint(websocket: WebSocket):
             except Exception:
                 pass
         docker_client.close()
+        
+        
+@app.get("/api/metrics")
+async def metrics():
+    """
+    Metrics for prometheus
+    """
